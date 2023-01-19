@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git'https://github.com/20127589/newtest.git'
+                git branch: 'main', credentialsId: 'git', url: 'https://github.com/2imfatx/test-repos.git'
             }
         }
     }
