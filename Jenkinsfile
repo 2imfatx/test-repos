@@ -1,11 +1,14 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
-      stages {
-        stage('log version info') {
-      steps {
-        sh 'mvn --version'
-        sh 'mvn clean install'
-      }
+    agent an
+    stages {
+        stage('Build') {
+            steps {
+                git branch: 'main', credentialsId: 'git', url: 'https://github.com/2imfatx/test-repos.git'
+
+                sh 'apt-get update'
+                sh 'apt-get install maven -y'
+                sh 'mvn --version'
+            }
+        }
     }
-  }
 }
